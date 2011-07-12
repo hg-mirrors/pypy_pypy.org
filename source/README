@@ -6,6 +6,6 @@ You can get necessary software by doing:
 
     yatiblog -o ..
 
-you'll get html output in the parent directory.
+you'll get html output in the parent directory. you need an account
 Then you can check it in, login to pypy@pypy.org 
 and go to pypy.org/htdocs/ and type "hg pull -u".
