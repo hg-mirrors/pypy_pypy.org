@@ -3,6 +3,13 @@ layout: page
 title: Call for donations - PyPy to support Python3!
 ---
 
+UPDATE (February 2016):
+  *We have completed all the goals of this call, while being
+  funded at 60%. Since cpyext (support for the c-api) is incomplete
+  on PyPy 2.7, the corresponding code in PyPy 3 is also incomplete.
+  As the support becomes more complete in PyPy 2.7, we will update
+  the support in PyPy 3.*
+
 UPDATE (February 2014):
 
   *Thanks to our donors, we have raised 45% of
