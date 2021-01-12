@@ -106,11 +106,11 @@ there. Please just check if it imports. If it imports, it should work:</p>
 not support refcounting semantics. The following code won't fill the
 file immediately, but only after a certain period of time, when the GC
 does a collection and flushes the output:</p>
-<pre class="code python"><a name="rest_code_2f2c985757054fd985d22b8839022060-1"></a><span class="nb">open</span><span class="p">(</span><span class="s2">"filename"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"stuff"</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_4853ec15d8e04477993cd7a1b74cb3fe-1"></a><span class="nb">open</span><span class="p">(</span><span class="s2">"filename"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"stuff"</span><span class="p">)</span>
 </pre>
 <p>The proper fix is</p>
-<pre class="code python"><a name="rest_code_fc85b16476c04a1ab8ac6ae907932bd2-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"filename"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<a name="rest_code_fc85b16476c04a1ab8ac6ae907932bd2-2"></a>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"stuff"</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_de51c85918324c5e9721e22eec4242bb-1"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"filename"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a name="rest_code_de51c85918324c5e9721e22eec4242bb-2"></a>    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"stuff"</span><span class="p">)</span>
 </pre>
 <p>The same problem---not closing your files---can also show up if your
 program opens a large number of files without closing them explicitly.
@@ -124,22 +124,22 @@ places where <code class="docutils literal">close()</code> is missing.</p>
 <p>Similarly, remember that you must <code class="docutils literal">close()</code> a non-exhausted
 generator in order to have its pending <code class="docutils literal">finally</code> or <code class="docutils literal">with</code>
 clauses executed immediately:</p>
-<pre class="code python"><a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-1"></a><span class="k">def</span> <span class="nf">mygen</span><span class="p">():</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-2"></a>    <span class="k">with</span> <span class="n">foo</span><span class="p">:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-3"></a>        <span class="k">yield</span> <span class="mi">42</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-4"></a>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-5"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mygen</span><span class="p">():</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-6"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-7"></a>        <span class="k">break</span>    <span class="c1"># foo.__exit__ is not run immediately!</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-8"></a>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-9"></a><span class="c1"># fixed version:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-10"></a><span class="n">gen</span> <span class="o">=</span> <span class="n">mygen</span><span class="p">()</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-11"></a><span class="k">try</span><span class="p">:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-12"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-13"></a>        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-14"></a>            <span class="k">break</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-15"></a><span class="k">finally</span><span class="p">:</span>
-<a name="rest_code_baf6f21c14fa499ebdf097bf4853aa58-16"></a>    <span class="n">gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_399bd52485bf433a9c1ec730b5096603-1"></a><span class="k">def</span> <span class="nf">mygen</span><span class="p">():</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-2"></a>    <span class="k">with</span> <span class="n">foo</span><span class="p">:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-3"></a>        <span class="k">yield</span> <span class="mi">42</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-4"></a>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-5"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mygen</span><span class="p">():</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-6"></a>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-7"></a>        <span class="k">break</span>    <span class="c1"># foo.__exit__ is not run immediately!</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-8"></a>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-9"></a><span class="c1"># fixed version:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-10"></a><span class="n">gen</span> <span class="o">=</span> <span class="n">mygen</span><span class="p">()</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-11"></a><span class="k">try</span><span class="p">:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-12"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-13"></a>        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-14"></a>            <span class="k">break</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-15"></a><span class="k">finally</span><span class="p">:</span>
+<a name="rest_code_399bd52485bf433a9c1ec730b5096603-16"></a>    <span class="n">gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre>
 <p>More generally, <code class="docutils literal">__del__()</code> methods are not executed as predictively
 as on CPython: they run "some time later" in PyPy (or not at all if
