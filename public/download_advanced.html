@@ -324,14 +324,14 @@ about "missing Python.h", you may need to install the pypy-dev package.</p>
 <p>Get the source code.  The preferred way is to checkout the current
 trunk using <a class="reference external" href="https://www.mercurial-scm.org/">Mercurial</a>.  The trunk usually works and is of course
 more up-to-date:</p>
-<pre class="code bash"><a name="rest_code_8a96c349e1b945a5b224d206be6cb91b-1"></a>hg clone https://foss.heptapod.net/pypy/pypy
+<pre class="code bash"><a name="rest_code_f18e48bf0679471c8a08e2efaad108eb-1"></a>hg clone https://foss.heptapod.net/pypy/pypy
 </pre>
 <p>The trunk contains PyPy 2.  For PyPy 3, switch to the correct branch:</p>
-<pre class="code bash"><a name="rest_code_3057641fac46478b85544bea81757f5e-1"></a><span class="c1"># switch to the branch that implements Python 3.7</span>
-<a name="rest_code_3057641fac46478b85544bea81757f5e-2"></a>hg update py3.7
-<a name="rest_code_3057641fac46478b85544bea81757f5e-3"></a>
-<a name="rest_code_3057641fac46478b85544bea81757f5e-4"></a><span class="c1"># switch to the branch that implements Python 3.6</span>
-<a name="rest_code_3057641fac46478b85544bea81757f5e-5"></a>hg update py3.6
+<pre class="code bash"><a name="rest_code_2a5a6d11d22c4f269729ea7fbe7f4b18-1"></a><span class="c1"># switch to the branch that implements Python 3.7</span>
+<a name="rest_code_2a5a6d11d22c4f269729ea7fbe7f4b18-2"></a>hg update py3.7
+<a name="rest_code_2a5a6d11d22c4f269729ea7fbe7f4b18-3"></a>
+<a name="rest_code_2a5a6d11d22c4f269729ea7fbe7f4b18-4"></a><span class="c1"># switch to the branch that implements Python 3.6</span>
+<a name="rest_code_2a5a6d11d22c4f269729ea7fbe7f4b18-5"></a>hg update py3.6
 </pre>
 <p>Alternatively, get one of the following smaller packages for the source at
 the same revision as the above binaries:</p>
@@ -346,19 +346,19 @@ the same revision as the above binaries:</p>
 </li>
 <li>
 <p>Enter the <code class="docutils literal">goal</code> directory:</p>
-<pre class="code bash"><a name="rest_code_a4328cbb69434e7194dcacef65e629c6-1"></a><span class="nb">cd</span> pypy/pypy/goal
+<pre class="code bash"><a name="rest_code_0e6961e265964f3aa496e7db7eb1acdd-1"></a><span class="nb">cd</span> pypy/pypy/goal
 </pre>
 </li>
 <li>
 <p>Run the <code class="docutils literal">rpython</code> script.  Here are the common combinations
 of options (works also with <code class="docutils literal">python</code> instead of <code class="docutils literal">pypy</code>;
 requires CPython 2.7 or PyPy 2, even to build PyPy 3):</p>
-<pre class="code bash"><a name="rest_code_86c426eb47fe422d942ec66187e8252c-1"></a><span class="c1"># get the JIT version</span>
-<a name="rest_code_86c426eb47fe422d942ec66187e8252c-2"></a>pypy ../../rpython/bin/rpython -Ojit targetpypystandalone
-<a name="rest_code_86c426eb47fe422d942ec66187e8252c-3"></a><span class="c1"># get the no-jit version</span>
-<a name="rest_code_86c426eb47fe422d942ec66187e8252c-4"></a>pypy ../../rpython/bin/rpython -O2 targetpypystandalone
-<a name="rest_code_86c426eb47fe422d942ec66187e8252c-5"></a><span class="c1"># get the sandbox version</span>
-<a name="rest_code_86c426eb47fe422d942ec66187e8252c-6"></a>pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone
+<pre class="code bash"><a name="rest_code_2a98d71f98d94444a8e2a23e9766e561-1"></a><span class="c1"># get the JIT version</span>
+<a name="rest_code_2a98d71f98d94444a8e2a23e9766e561-2"></a>pypy ../../rpython/bin/rpython -Ojit targetpypystandalone
+<a name="rest_code_2a98d71f98d94444a8e2a23e9766e561-3"></a><span class="c1"># get the no-jit version</span>
+<a name="rest_code_2a98d71f98d94444a8e2a23e9766e561-4"></a>pypy ../../rpython/bin/rpython -O2 targetpypystandalone
+<a name="rest_code_2a98d71f98d94444a8e2a23e9766e561-5"></a><span class="c1"># get the sandbox version</span>
+<a name="rest_code_2a98d71f98d94444a8e2a23e9766e561-6"></a>pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone
 </pre>
 </li>
 <li><p>Enjoy Mandelbrot <code class="docutils literal"><span class="pre">:-)</span></code>  It takes on the order of half an hour to
@@ -386,17 +386,17 @@ used and 2.9 GB if CPython is used.  There are two workarounds:</p>
 <p>1. use PyPy, not CPython.  If you don't have any PyPy so far, not even
 an older version, then you need to build one first, with some parts
 removed.  So, first translate with:</p>
-<pre class="code shell"><a name="rest_code_1453b8df0b47498e81d39c58f46488bd-1"></a>cpython2 rpython -Ojit targetpypystandalone <span class="se">\</span>
-<a name="rest_code_1453b8df0b47498e81d39c58f46488bd-2"></a>--withoutmod-micronumpy --withoutmod-cpyext
+<pre class="code shell"><a name="rest_code_698ebc66d9a043729311572cda524f5f-1"></a>cpython2 rpython -Ojit targetpypystandalone <span class="se">\</span>
+<a name="rest_code_698ebc66d9a043729311572cda524f5f-2"></a>--withoutmod-micronumpy --withoutmod-cpyext
 </pre>
 <p>then copy <code class="docutils literal"><span class="pre">pypy-c</span></code> and <code class="docutils literal">libpypy_c.so</code> somewhere else, and finally
 call it with <code class="docutils literal"><span class="pre">...pypy-c</span> <span class="pre">../../rpython/bin/rpython</span> <span class="pre">-Ojit</span></code>.</p>
 <p>2. if even using PyPy instead of CPython is not enough, try to tweak
 some internal parameters.  Example (slower but saves around 400MB):</p>
-<pre class="code bash"><a name="rest_code_c49764df55544b49aeacfa034a36b79b-1"></a><span class="nv">PYPY_DONT_RUN_SUBPROCESS</span><span class="o">=</span><span class="m">1</span> <span class="nv">PYPY_GC_MAX_DELTA</span><span class="o">=</span>200MB <span class="se">\</span>
-<a name="rest_code_c49764df55544b49aeacfa034a36b79b-2"></a>pypy --jit <span class="nv">loop_longevity</span><span class="o">=</span><span class="m">300</span> ../../rpython/bin/rpython <span class="se">\</span>
-<a name="rest_code_c49764df55544b49aeacfa034a36b79b-3"></a>-Ojit --source
-<a name="rest_code_c49764df55544b49aeacfa034a36b79b-4"></a><span class="c1"># then read the next point about --source</span>
+<pre class="code bash"><a name="rest_code_1c631bc793c0471fa7bb001240ccf734-1"></a><span class="nv">PYPY_DONT_RUN_SUBPROCESS</span><span class="o">=</span><span class="m">1</span> <span class="nv">PYPY_GC_MAX_DELTA</span><span class="o">=</span>200MB <span class="se">\</span>
+<a name="rest_code_1c631bc793c0471fa7bb001240ccf734-2"></a>pypy --jit <span class="nv">loop_longevity</span><span class="o">=</span><span class="m">300</span> ../../rpython/bin/rpython <span class="se">\</span>
+<a name="rest_code_1c631bc793c0471fa7bb001240ccf734-3"></a>-Ojit --source
+<a name="rest_code_1c631bc793c0471fa7bb001240ccf734-4"></a><span class="c1"># then read the next point about --source</span>
 </pre>
 </li>
 <li><p>You can run translations with <code class="docutils literal"><span class="pre">--source</span></code>, which only builds the C
@@ -417,9 +417,9 @@ translation and you specify <code class="docutils literal"><span class="pre">--s
 <p>Once PyPy is translated from source, a binary package similar to those
 provided in the section <a class="reference internal" href="download_advanced.html#default-with-a-jit-compiler">Default (with a JIT Compiler)</a> above can be
 created with the <code class="docutils literal">package.py</code> script:</p>
-<pre class="code bash"><a name="rest_code_621874c5af18435583203126ce455913-1"></a><span class="nb">cd</span> ./pypy/pypy/tool/release/
-<a name="rest_code_621874c5af18435583203126ce455913-2"></a>python package.py --help  <span class="c1"># for information</span>
-<a name="rest_code_621874c5af18435583203126ce455913-3"></a>python package.py --archive-name pypy-my-own-package-name
+<pre class="code bash"><a name="rest_code_eeceb74534dc47508ee37e9d09055595-1"></a><span class="nb">cd</span> ./pypy/pypy/tool/release/
+<a name="rest_code_eeceb74534dc47508ee37e9d09055595-2"></a>python package.py --help  <span class="c1"># for information</span>
+<a name="rest_code_eeceb74534dc47508ee37e9d09055595-3"></a>python package.py --archive-name pypy-my-own-package-name
 </pre>
 <p>It is recommended to use package.py because custom scripts will
 invariably become out-of-date.  If you want to write custom scripts
