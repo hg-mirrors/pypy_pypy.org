@@ -153,16 +153,16 @@ languages.</p>
 build <code class="docutils literal"><span class="pre">pypy-sandbox</span></code> from it (see <a class="reference external" href="download.html#building-from-source">Building from source</a>).  These
 instructions give you a <code class="docutils literal"><span class="pre">pypy-c</span></code> that you should rename to
 <code class="docutils literal"><span class="pre">pypy-sandbox</span></code> to avoid future confusion.  Then run:</p>
-<pre class="code bash"><a name="rest_code_bed12272c9ee4bd087d2c6ab29618ca2-1"></a><span class="nb">cd</span> pypy/sandbox
-<a name="rest_code_bed12272c9ee4bd087d2c6ab29618ca2-2"></a>pypy_interact.py path/to/pypy-sandbox
-<a name="rest_code_bed12272c9ee4bd087d2c6ab29618ca2-3"></a><span class="c1"># don't confuse it with pypy/goal/pyinteractive.py!</span>
+<pre class="code bash"><a name="rest_code_1383e094cebc48d995159cadb548b564-1"></a><span class="nb">cd</span> pypy/sandbox
+<a name="rest_code_1383e094cebc48d995159cadb548b564-2"></a>pypy_interact.py path/to/pypy-sandbox
+<a name="rest_code_1383e094cebc48d995159cadb548b564-3"></a><span class="c1"># don't confuse it with pypy/goal/pyinteractive.py!</span>
 </pre>
 <p>You get a fully sandboxed interpreter, in its own filesystem hierarchy
 (try <code class="docutils literal"><span class="pre">os.listdir('/')</span></code>).  For example, you would run an untrusted
 script as follows:</p>
-<pre class="code bash"><a name="rest_code_d27972dd4a114288985adfa44deff44d-1"></a>mkdir virtualtmp
-<a name="rest_code_d27972dd4a114288985adfa44deff44d-2"></a>cp untrusted.py virtualtmp/
-<a name="rest_code_d27972dd4a114288985adfa44deff44d-3"></a>pypy_interact.py --tmp<span class="o">=</span>virtualtmp pypy-sandbox /tmp/untrusted.py
+<pre class="code bash"><a name="rest_code_5210ec3f8df240c492d8c1c71b504edc-1"></a>mkdir virtualtmp
+<a name="rest_code_5210ec3f8df240c492d8c1c71b504edc-2"></a>cp untrusted.py virtualtmp/
+<a name="rest_code_5210ec3f8df240c492d8c1c71b504edc-3"></a>pypy_interact.py --tmp<span class="o">=</span>virtualtmp pypy-sandbox /tmp/untrusted.py
 </pre>
 <p>Note that the path <code class="docutils literal">/tmp/untrusted.py</code> is a path inside the sandboxed
 filesystem.  You don't have to put <code class="docutils literal">untrusted.py</code> in the real <code class="docutils literal">/tmp</code>
