@@ -231,13 +231,13 @@ until 2.0.</p>
 <div class="section" id="string-concatenation-is-expensive">
 <h3>String concatenation is expensive</h3>
 <p>In CPython, you may want to replace:</p>
-<pre class="code python"><a name="rest_code_ff77e56b10f9479bbdaa43405ddd5abe-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">head</span> <span class="o">+</span> <span class="n">body</span> <span class="o">+</span> <span class="n">maybe</span> <span class="o">+</span> <span class="n">tail</span>
+<pre class="code python"><a name="rest_code_cfd64c9077ba405d913a0a83dfbb26dd-1"></a><span class="n">s</span> <span class="o">=</span> <span class="n">head</span> <span class="o">+</span> <span class="n">body</span> <span class="o">+</span> <span class="n">maybe</span> <span class="o">+</span> <span class="n">tail</span>
 </pre>
 <p>with the admittedly less readable:</p>
-<pre class="code python"><a name="rest_code_24c382b6bf1b4a2e8cbe8750a24c4772-1"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%(head)s%(body)s%(maybe)s%(tail)s</span><span class="s2">"</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
+<pre class="code python"><a name="rest_code_f2ab3ab465e946c99daea31e303a5b11-1"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%(head)s%(body)s%(maybe)s%(tail)s</span><span class="s2">"</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
 </pre>
 <p>or even:</p>
-<pre class="code python"><a name="rest_code_86dd8e706fa148788131a10ee23dc69b-1"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{head}{body}{maybe}{tail}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+<pre class="code python"><a name="rest_code_67531a6d874d41f2b791d75eb3076c57-1"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{head}{body}{maybe}{tail}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
 </pre>
 <p>Both of the latter forms avoid multiple-allocation overhead.
 But PyPy's JIT makes the overhead of intermediate concatenations
@@ -245,8 +245,8 @@ go away in linear code that keeps the number of concatenations
 small, bound and constant.  (And <code class="docutils literal">locals()</code> is rather slow
 with PyPy's JIT.)</p>
 <p>On the other hand, in code like this with a string-valued foo() function:</p>
-<pre class="code python"><a name="rest_code_61bc825b735b431d91b0e26c1fbe32f8-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
-<a name="rest_code_61bc825b735b431d91b0e26c1fbe32f8-2"></a>    <span class="n">s</span> <span class="o">+=</span> <span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_52e534d695984375b7118443789eb350-1"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+<a name="rest_code_52e534d695984375b7118443789eb350-2"></a>    <span class="n">s</span> <span class="o">+=</span> <span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre>
 <p>the JIT cannot optimize out intermediate copies.  This code is
 actually quadratic in the total size of the mylist strings due to
@@ -254,10 +254,10 @@ repeated string copies of ever-larger prefix segments.  (Such code
 is always fine for bytearrays, because in this case <code class="docutils literal">+=</code> is an
 in-place operation.)</p>
 <p>This:</p>
-<pre class="code python"><a name="rest_code_854ab526532e4337ade4da1c0c169546-1"></a><span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
-<a name="rest_code_854ab526532e4337ade4da1c0c169546-2"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
-<a name="rest_code_854ab526532e4337ade4da1c0c169546-3"></a>    <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<a name="rest_code_854ab526532e4337ade4da1c0c169546-4"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_dda43fadf04e4f55953b97b0c55a6062-1"></a><span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+<a name="rest_code_dda43fadf04e4f55953b97b0c55a6062-2"></a><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mylist</span><span class="p">:</span>
+<a name="rest_code_dda43fadf04e4f55953b97b0c55a6062-3"></a>    <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a name="rest_code_dda43fadf04e4f55953b97b0c55a6062-4"></a><span class="n">s</span> <span class="o">=</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
 </pre>
 <p>can be much faster because all the string concatenation in the last
 line creates exactly one new string object with one C-level copy
