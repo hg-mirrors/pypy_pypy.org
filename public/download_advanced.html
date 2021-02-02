@@ -152,7 +152,7 @@ this link for <a class="reference external" href="https://downloads.python.org/p
 <td><p><a class="reference external" href="https://downloads.python.org/pypy/pypy3.7-v7.3.3-aarch64.tar.bz2">Download</a></p></td>
 <td><p><a class="reference external" href="https://downloads.python.org/pypy/pypy3.6-v7.3.3-aarch64.tar.bz2">Download</a></p></td>
 <td><p><a class="reference external" href="https://downloads.python.org/pypy/pypy2.7-v7.3.3-aarch64.tar.bz2">Download</a></p></td>
-<td><p>compatible with CentOS6 and later</p></td>
+<td><p>compatible with Ubuntu 18 only</p></td>
 </tr>
 </tbody>
 </table>
@@ -324,14 +324,14 @@ about "missing Python.h", you may need to install the pypy-dev package.</p>
 <p>Get the source code.  The preferred way is to checkout the current
 trunk using <a class="reference external" href="https://www.mercurial-scm.org/">Mercurial</a>.  The trunk usually works and is of course
 more up-to-date:</p>
-<pre class="code bash"><a name="rest_code_6aece297ce4440c88e0d7a8e54e7fafa-1"></a>hg clone https://foss.heptapod.net/pypy/pypy
+<pre class="code bash"><a name="rest_code_d2e494fbd91347a4a2c571c2a45f31ac-1"></a>hg clone https://foss.heptapod.net/pypy/pypy
 </pre>
 <p>The trunk contains PyPy 2.  For PyPy 3, switch to the correct branch:</p>
-<pre class="code bash"><a name="rest_code_3b1e62878ccb44bb8121fd5bd90aa2d3-1"></a><span class="c1"># switch to the branch that implements Python 3.7</span>
-<a name="rest_code_3b1e62878ccb44bb8121fd5bd90aa2d3-2"></a>hg update py3.7
-<a name="rest_code_3b1e62878ccb44bb8121fd5bd90aa2d3-3"></a>
-<a name="rest_code_3b1e62878ccb44bb8121fd5bd90aa2d3-4"></a><span class="c1"># switch to the branch that implements Python 3.6</span>
-<a name="rest_code_3b1e62878ccb44bb8121fd5bd90aa2d3-5"></a>hg update py3.6
+<pre class="code bash"><a name="rest_code_60bf14f70e71482cb1073cc45ef0eece-1"></a><span class="c1"># switch to the branch that implements Python 3.7</span>
+<a name="rest_code_60bf14f70e71482cb1073cc45ef0eece-2"></a>hg update py3.7
+<a name="rest_code_60bf14f70e71482cb1073cc45ef0eece-3"></a>
+<a name="rest_code_60bf14f70e71482cb1073cc45ef0eece-4"></a><span class="c1"># switch to the branch that implements Python 3.6</span>
+<a name="rest_code_60bf14f70e71482cb1073cc45ef0eece-5"></a>hg update py3.6
 </pre>
 <p>Alternatively, get one of the following smaller packages for the source at
 the same revision as the above binaries:</p>
@@ -346,19 +346,19 @@ the same revision as the above binaries:</p>
 </li>
 <li>
 <p>Enter the <code class="docutils literal">goal</code> directory:</p>
-<pre class="code bash"><a name="rest_code_1f345ac66d0f43c1aee003d18166ca12-1"></a><span class="nb">cd</span> pypy/pypy/goal
+<pre class="code bash"><a name="rest_code_383542b62d534b349797c7a13d266c4a-1"></a><span class="nb">cd</span> pypy/pypy/goal
 </pre>
 </li>
 <li>
 <p>Run the <code class="docutils literal">rpython</code> script.  Here are the common combinations
 of options (works also with <code class="docutils literal">python</code> instead of <code class="docutils literal">pypy</code>;
 requires CPython 2.7 or PyPy 2, even to build PyPy 3):</p>
-<pre class="code bash"><a name="rest_code_e21f5491c9a04cb091eeb5c51f3cf296-1"></a><span class="c1"># get the JIT version</span>
-<a name="rest_code_e21f5491c9a04cb091eeb5c51f3cf296-2"></a>pypy ../../rpython/bin/rpython -Ojit targetpypystandalone
-<a name="rest_code_e21f5491c9a04cb091eeb5c51f3cf296-3"></a><span class="c1"># get the no-jit version</span>
-<a name="rest_code_e21f5491c9a04cb091eeb5c51f3cf296-4"></a>pypy ../../rpython/bin/rpython -O2 targetpypystandalone
-<a name="rest_code_e21f5491c9a04cb091eeb5c51f3cf296-5"></a><span class="c1"># get the sandbox version</span>
-<a name="rest_code_e21f5491c9a04cb091eeb5c51f3cf296-6"></a>pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone
+<pre class="code bash"><a name="rest_code_9aad957f3c404e0396bc7c5727e96a6d-1"></a><span class="c1"># get the JIT version</span>
+<a name="rest_code_9aad957f3c404e0396bc7c5727e96a6d-2"></a>pypy ../../rpython/bin/rpython -Ojit targetpypystandalone
+<a name="rest_code_9aad957f3c404e0396bc7c5727e96a6d-3"></a><span class="c1"># get the no-jit version</span>
+<a name="rest_code_9aad957f3c404e0396bc7c5727e96a6d-4"></a>pypy ../../rpython/bin/rpython -O2 targetpypystandalone
+<a name="rest_code_9aad957f3c404e0396bc7c5727e96a6d-5"></a><span class="c1"># get the sandbox version</span>
+<a name="rest_code_9aad957f3c404e0396bc7c5727e96a6d-6"></a>pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone
 </pre>
 </li>
 <li><p>Enjoy Mandelbrot <code class="docutils literal"><span class="pre">:-)</span></code>  It takes on the order of half an hour to
@@ -386,17 +386,17 @@ used and 2.9 GB if CPython is used.  There are two workarounds:</p>
 <p>1. use PyPy, not CPython.  If you don't have any PyPy so far, not even
 an older version, then you need to build one first, with some parts
 removed.  So, first translate with:</p>
-<pre class="code shell"><a name="rest_code_c7ea35b5ca874db3bb8dc04058d66d7c-1"></a>cpython2 rpython -Ojit targetpypystandalone <span class="se">\</span>
-<a name="rest_code_c7ea35b5ca874db3bb8dc04058d66d7c-2"></a>--withoutmod-micronumpy --withoutmod-cpyext
+<pre class="code shell"><a name="rest_code_8bd035c380064f719256b58ba85de36c-1"></a>cpython2 rpython -Ojit targetpypystandalone <span class="se">\</span>
+<a name="rest_code_8bd035c380064f719256b58ba85de36c-2"></a>--withoutmod-micronumpy --withoutmod-cpyext
 </pre>
 <p>then copy <code class="docutils literal"><span class="pre">pypy-c</span></code> and <code class="docutils literal">libpypy_c.so</code> somewhere else, and finally
 call it with <code class="docutils literal"><span class="pre">...pypy-c</span> <span class="pre">../../rpython/bin/rpython</span> <span class="pre">-Ojit</span></code>.</p>
 <p>2. if even using PyPy instead of CPython is not enough, try to tweak
 some internal parameters.  Example (slower but saves around 400MB):</p>
-<pre class="code bash"><a name="rest_code_9a5b2bfd138843c5906f2849a2a95f66-1"></a><span class="nv">PYPY_DONT_RUN_SUBPROCESS</span><span class="o">=</span><span class="m">1</span> <span class="nv">PYPY_GC_MAX_DELTA</span><span class="o">=</span>200MB <span class="se">\</span>
-<a name="rest_code_9a5b2bfd138843c5906f2849a2a95f66-2"></a>pypy --jit <span class="nv">loop_longevity</span><span class="o">=</span><span class="m">300</span> ../../rpython/bin/rpython <span class="se">\</span>
-<a name="rest_code_9a5b2bfd138843c5906f2849a2a95f66-3"></a>-Ojit --source
-<a name="rest_code_9a5b2bfd138843c5906f2849a2a95f66-4"></a><span class="c1"># then read the next point about --source</span>
+<pre class="code bash"><a name="rest_code_0cd21e6da8b64a05ab755ac51e4f6361-1"></a><span class="nv">PYPY_DONT_RUN_SUBPROCESS</span><span class="o">=</span><span class="m">1</span> <span class="nv">PYPY_GC_MAX_DELTA</span><span class="o">=</span>200MB <span class="se">\</span>
+<a name="rest_code_0cd21e6da8b64a05ab755ac51e4f6361-2"></a>pypy --jit <span class="nv">loop_longevity</span><span class="o">=</span><span class="m">300</span> ../../rpython/bin/rpython <span class="se">\</span>
+<a name="rest_code_0cd21e6da8b64a05ab755ac51e4f6361-3"></a>-Ojit --source
+<a name="rest_code_0cd21e6da8b64a05ab755ac51e4f6361-4"></a><span class="c1"># then read the next point about --source</span>
 </pre>
 </li>
 <li><p>You can run translations with <code class="docutils literal"><span class="pre">--source</span></code>, which only builds the C
@@ -417,9 +417,9 @@ translation and you specify <code class="docutils literal"><span class="pre">--s
 <p>Once PyPy is translated from source, a binary package similar to those
 provided in the section <a class="reference internal" href="download_advanced.html#default-with-a-jit-compiler">Default (with a JIT Compiler)</a> above can be
 created with the <code class="docutils literal">package.py</code> script:</p>
-<pre class="code bash"><a name="rest_code_d38ef23b89f84e5f8a064a5a3e78d827-1"></a><span class="nb">cd</span> ./pypy/pypy/tool/release/
-<a name="rest_code_d38ef23b89f84e5f8a064a5a3e78d827-2"></a>python package.py --help  <span class="c1"># for information</span>
-<a name="rest_code_d38ef23b89f84e5f8a064a5a3e78d827-3"></a>python package.py --archive-name pypy-my-own-package-name
+<pre class="code bash"><a name="rest_code_d25443e07eb44629aabfc1e37898bac8-1"></a><span class="nb">cd</span> ./pypy/pypy/tool/release/
+<a name="rest_code_d25443e07eb44629aabfc1e37898bac8-2"></a>python package.py --help  <span class="c1"># for information</span>
+<a name="rest_code_d25443e07eb44629aabfc1e37898bac8-3"></a>python package.py --archive-name pypy-my-own-package-name
 </pre>
 <p>It is recommended to use package.py because custom scripts will
 invariably become out-of-date.  If you want to write custom scripts
@@ -611,7 +611,7 @@ faa81f469bb2a7cbd22c64f22d4b4ddc5a1f7c798d43b7919b629b932f9b1c6f  pypy3.6-v7.1.0
     <img src="images/pypy-logo-nav-grey.png" alt="PyPy Logo">
 </div>
   <div class="logotext">
-     Contents © 2020 <a href="mailto:pypy-dev@pypy.org">The PyPy Team</a>
+     Contents © 2021 <a href="mailto:pypy-dev@pypy.org">The PyPy Team</a>
     Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a> 
   </div>
 </div>
