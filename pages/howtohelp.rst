@@ -14,7 +14,7 @@ Here are some ideas to help PyPy development:
 
 * write blog posts or tweets about your experiences
 
-* help porting to new platforms
+* vist our `issue tracker`_ and submit a merge request
 
 * contact_ us and get involved
 
@@ -23,3 +23,4 @@ Here are some ideas to help PyPy development:
 .. _contact: contact.html
 .. _feedback: contact.html
 .. _`donate`: https://opencollective.com/pypy
+.. _`issue tracker`: https://foss.heptapod.net/heptapod/foss.heptapod.net/-/issues

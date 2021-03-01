@@ -46,7 +46,16 @@
 </li>
           <li> <a href="download.html">Download</a> </li>  
           <li> <a href="http://doc.pypy.org">Dev Documentation</a> </li>  
-          <li> <a href="http://morepypy.blogspot.com">Blog</a> </li>  
+            <li> 
+                <a href="#!">More</a>
+                <ul class="nav-dropdown">
+<li> <a href="https://twitter.com/pypyproject">Twitter</a> </li>  
+                    <li> <a href="https://quodlibet.duckdns.org/irc/pypy/latest.log.html#irc-end">IRC</a> </li>  
+                    <li> <a href="http://morepypy.blogspot.com">Blog</a> </li>  
+                    <li> <a href="https://www.youtube.com/playlist?list=PLADqad94yVqDRQXuqxKrPS5QnVqbDLlRt">YouTube</a> </li>  
+                    <li> <a href="https://www.twitch.tv/pypyproject">Twitch</a> </li>  
+                </ul>
+</li>
             <li> 
                 <a href="#!">About</a>
                 <ul class="nav-dropdown">
@@ -153,16 +162,16 @@ languages.</p>
 build <code class="docutils literal"><span class="pre">pypy-sandbox</span></code> from it (see <a class="reference external" href="download.html#building-from-source">Building from source</a>).  These
 instructions give you a <code class="docutils literal"><span class="pre">pypy-c</span></code> that you should rename to
 <code class="docutils literal"><span class="pre">pypy-sandbox</span></code> to avoid future confusion.  Then run:</p>
-<pre class="code bash"><a name="rest_code_2d33005c902841789ff6f53d12a603a7-1"></a><span class="nb">cd</span> pypy/sandbox
-<a name="rest_code_2d33005c902841789ff6f53d12a603a7-2"></a>pypy_interact.py path/to/pypy-sandbox
-<a name="rest_code_2d33005c902841789ff6f53d12a603a7-3"></a><span class="c1"># don't confuse it with pypy/goal/pyinteractive.py!</span>
+<pre class="code bash"><a name="rest_code_2f04b7f18fdf43829754464872e0e6ae-1"></a><span class="nb">cd</span> pypy/sandbox
+<a name="rest_code_2f04b7f18fdf43829754464872e0e6ae-2"></a>pypy_interact.py path/to/pypy-sandbox
+<a name="rest_code_2f04b7f18fdf43829754464872e0e6ae-3"></a><span class="c1"># don't confuse it with pypy/goal/pyinteractive.py!</span>
 </pre>
 <p>You get a fully sandboxed interpreter, in its own filesystem hierarchy
 (try <code class="docutils literal"><span class="pre">os.listdir('/')</span></code>).  For example, you would run an untrusted
 script as follows:</p>
-<pre class="code bash"><a name="rest_code_03ca0fc99e924e1d915e5c8e4a167d75-1"></a>mkdir virtualtmp
-<a name="rest_code_03ca0fc99e924e1d915e5c8e4a167d75-2"></a>cp untrusted.py virtualtmp/
-<a name="rest_code_03ca0fc99e924e1d915e5c8e4a167d75-3"></a>pypy_interact.py --tmp<span class="o">=</span>virtualtmp pypy-sandbox /tmp/untrusted.py
+<pre class="code bash"><a name="rest_code_4888076e716a415fb74f1a0b3abe9604-1"></a>mkdir virtualtmp
+<a name="rest_code_4888076e716a415fb74f1a0b3abe9604-2"></a>cp untrusted.py virtualtmp/
+<a name="rest_code_4888076e716a415fb74f1a0b3abe9604-3"></a>pypy_interact.py --tmp<span class="o">=</span>virtualtmp pypy-sandbox /tmp/untrusted.py
 </pre>
 <p>Note that the path <code class="docutils literal">/tmp/untrusted.py</code> is a path inside the sandboxed
 filesystem.  You don't have to put <code class="docutils literal">untrusted.py</code> in the real <code class="docutils literal">/tmp</code>
