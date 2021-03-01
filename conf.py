@@ -152,7 +152,16 @@ NAVIGATION_LINKS = {
         ),
         ('/download.html', 'Download'),
         ('http://doc.pypy.org', 'Dev Documentation'),
-        ('http://morepypy.blogspot.com', 'Blog'),
+        (
+            (
+                ('https://twitter.com/pypyproject', 'Twitter'),
+                ('https://quodlibet.duckdns.org/irc/pypy/latest.log.html#irc-end', 'IRC'),
+                ('http://morepypy.blogspot.com', 'Blog'),
+                ('https://www.youtube.com/playlist?list=PLADqad94yVqDRQXuqxKrPS5QnVqbDLlRt', 'YouTube'),
+                ('https://www.twitch.tv/pypyproject', 'Twitch'),
+            ),
+            'More',
+        ),
         (
             (
                 ('/people.html', 'People'),
